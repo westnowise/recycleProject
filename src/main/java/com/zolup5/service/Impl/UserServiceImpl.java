@@ -36,12 +36,16 @@ public class UserServiceImpl implements UserService {
         return validatorResult;
     }
     public Long join(UserFormDTO userFormDTO) {
+        if (userFormDTO.getPoint() == null) {
+            userFormDTO.setPoint("0");
+        }
         userFormDTO.setPassword(passwordEncoder.encode(userFormDTO.getPassword()));
         Member user = Member.builder()
                 .username(userFormDTO.getUsername())
                 .email(userFormDTO.getEmail())
                 .password(userFormDTO.getPassword())
                 .area(userFormDTO.getArea())
+                .point(userFormDTO.getPoint())
                 .role(Role.USER)
                 .build();
 

@@ -26,9 +26,9 @@
         <button class="btn"></button>
     </div>
 <form th:action="@{/oxgame}" method="post" >
-    <div sec:authorize="isAuthenticated()" class="buttons">
-        <input type="hidden" name="score" id="score" />
-        <button type="submit" id="hidebutton" style="display: none;">포인트 저장하기</button>
+    <div sec:authorize="isAuthenticated()">
+        <input style="display: none;" name="score" id="score" />
+        <button class="buttons" type="submit" id="hidebutton" style="display: none;" >포인트 저장하기</button>
     </div>
 </form>
     

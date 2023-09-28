@@ -23,7 +23,7 @@ public class Member {
     private String password;
     @Column(nullable = false, length = 30)
     private String area;
-    @Column(nullable = true, length = 30)
+    @Column(nullable = false, length = 30)
     private String point;
     @Column(nullable = true, length = 999)
     private String trash;
