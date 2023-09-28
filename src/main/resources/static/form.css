@@ -1,0 +1,300 @@
+@font-face {
+    font-family: 'PyeongChangPeace-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SBAggroB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    background: rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.56);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+@media (max-width: 575px){
+    .login {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            justify-content: space-around;
+            align-content: space-around;
+        }
+    
+        .login_line1 {
+            font-family: "Hanuman";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 28px;
+            line-height: 41px;
+            color: #000000;
+            margin-top: 49px;
+            font-family: 'PyeongChangPeace-Bold';
+        }
+
+        #box{
+			width: 100%;
+            margin-top: 20px;
+            
+		}
+		.text{
+            font-size: 14px;
+            font-family: 'GmarketSansMedium';
+			font-weight: 100;
+			color: black;
+		}
+		.blink {
+		  animation: blink 0.7s infinite;
+		}
+		@keyframes blink {
+		  to {
+		    opacity: 0;
+		  }
+		}
+    
+        .formWrap {
+            position: absolute;
+            top: 47%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    
+        input {
+            width: 350px;
+            height: 50px;
+            margin: 5px;
+            text-indent: 50px;
+            border: none;
+            border-bottom: 0.5px solid rgba(0, 0, 0, 0.153);
+        }
+    
+        .mailIMG {
+            position: absolute;
+            top: 14%;
+            left: 5.5%;
+        }
+    
+        .pwIMG {
+            position: absolute;
+            top: 63%;
+            left: 6%;
+        }
+    
+        .comment {
+            position: absolute;
+            top: 88%;
+            left: 34%;
+        }
+    
+        .comment a {
+            color: #043320f8;
+            text-decoration: none;
+            font-size: 12px;
+        }
+    
+        .okBTN {
+            width: 360px;
+            height: 50px;
+            position: absolute;
+            top: 77%;
+            border-radius: 5px;
+            border: none;
+            background-color: #043320f8;
+            font-size: 20px;
+            font-weight: 400;
+            color: white;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'S-CoreDream-3Light';
+        }
+    
+        .kakao {
+            position: absolute;
+            top: 95%;
+            width: 360px;
+            padding-bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+                /* 회원가입 */
+
+                .func{
+                    padding: 30px;
+                    margin-top: 20px;
+                }
+                .big{
+                    font-family: 'SBAggroB';
+                    font-size: 40px;
+                    font-weight: 700;
+                }
+                .small{
+                    font-family: 'GmarketSansMedium';
+                    font-size: 15px;
+                    font-weight: 100;
+                    margin-top: 20px;
+                }
+
+                .formWrap2 {
+                    position: absolute;
+                    top: 30%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+
+                .location{
+                    margin-left: 55px;
+                    margin-top: 20px;
+                }
+
+                .location select {
+                    height: 5vh;
+                    width: 37vw;
+                    padding: 5px;
+                    margin-right: 10px;
+                }
+                .userIMG {
+                    position: absolute;
+                    top: 6%;
+                    left: 5.5%;
+                }
+        
+                .mailIMG_register {
+                    position: absolute;
+                    top: 26%;
+                    left: 5.5%;
+                }
+        
+                .pwIMG_register {
+                    position: absolute;
+                    top: 47%;
+                    left: 5.7%;
+                }
+        
+                .checkIMG {
+                    position: absolute;
+                    top: 67%;
+                    left: 6%;
+                }
+
+                .map-pinIMG{
+                    position: absolute;
+                    left: 6%;
+                    top: 90%;
+                }
+        
+                .okBTN_register {
+                    width: 360px;
+                    height: 50px;
+                    position: absolute;
+                    top: 85%;
+                    border-radius: 5px;
+                    border: none;
+                    background-color: #043320f8;
+                    font-size: 20px;
+                    font-weight: 400;
+                    color: white;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    font-family: 'S-CoreDream-3Light';
+                }
+        
+                .comment_register {
+                    position: absolute;
+                    top: 95%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    font-size: 13px;
+                }
+        
+                .comment_register a {
+                    text-decoration: none;
+                    color: #043320f8;
+                }
+        
+                /* 비밀번호 찾기 */
+                .formWrap3{
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+
+
+                .okBTN_findPW {
+                    width: 360px;
+                    height: 50px;
+                    position: absolute;
+                    top: 85%;
+                    border-radius: 5px;
+                    border: none;
+                    background-color: #043320f8;
+                    font-size: 20px;
+                    font-weight: 400;
+                    color: white;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    font-family: 'S-CoreDream-3Light';
+                }
+
+
+                /* 비밀번호 초기화 */
+                .password_box_reset {
+                    text-indent: 20px;
+                }
+        
+                .okBTN_reset {
+                    width: 360px;
+                    height: 50px;
+                    position: absolute;
+                    top: 87%;
+                    margin: 10px;
+                    border-radius: 5px;
+                    border: none;
+                    background-color: #043320f8;
+                    font-size: 20px;
+                    font-weight: 400;
+                    color: white;
+                    font-family: 'S-CoreDream-3Light';
+                }
+        
+                .comment_reset {
+                    position: absolute;
+                    top: 98%;
+                    left: 34%;
+                    font-size: 13px;
+                    padding-bottom: 15px;
+        
+                }
+        
+                .comment_reset a {
+                    text-decoration: none;
+                    color: #2C4625;
+                }
+
+}
+
+

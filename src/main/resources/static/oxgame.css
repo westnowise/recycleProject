@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
+
+*{
+    background-color: #EDEAE4;
+    overflow-x: hidden;
+    font-family: 'Noto Sans KR', sans-serif;
+    -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none
+}
+
+h1{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 50px;
+    font-family: 'Single Day', cursive;
+}
+
+img{
+    width: 10vw; 
+    margin-right: 10px;
+}
+
+p{
+    font-weight: bold;
+    position: absolute;
+    top: 12%;
+    font-family: 'Single Day', cursive;
+}
+.paper {
+    position: absolute;
+    width: 95vw;
+    height: 40vh;
+    background: #fafafa;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+    top: 20%;
+    overflow: hidden;
+}
+
+.paper:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    background: radial-gradient(#575450 6px, transparent 7px) repeat-y;
+    background-size: 30px 30px;
+    border-right: 3px solid #D44147;
+    box-sizing: border-box;
+}
+
+.paper-content {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    bottom: 30px;
+    left: 60px;
+    background: linear-gradient(transparent, transparent 28px, #91D1D3 28px);
+    background-size: 30px 30px;
+}
+
+.paper-content p {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    line-height: 30px;
+    padding: 10px 20px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: mediumblue;
+    font-weight: bold;
+    font-size: 20px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+#quiz {
+    text-align: center;
+    background-color:  #FAFAFA;
+}
+
+#progress {
+    font-size: 20px;
+    color: #2b2b2b;
+}
+
+.buttons {
+    position: absolute;
+    bottom: 0%;
+    left: 10%;
+}
+
+.btn {
+    margin: 10px 40px 20px 0;
+    padding: 10px;
+    width: 80vw;
+    height: 10vh;
+    font-size: 16px;
+    color: #333;
+    background: #eed0dc;
+    border: 1px solid #ffe3ed;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all .2s;
+}
+

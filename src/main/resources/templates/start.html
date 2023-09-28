@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./start_style.css" />
+        <title>시작 페이지</title>
+    </head>
+    <div sec:authorize="!isAuthenticated()">
+        <body onclick="location.href='/login'">
+        <div class="start">
+            <div class="start_page">
+                <img src="/img/start_earth.png" alt=""/>
+                <div class="logo_print">Save Earth -</div>
+                <div class="team_print">딱총나무지팡이</div>
+            </div>
+        </div>
+        </body>
+    </div>
+    <div sec:authorize="isAuthenticated()">
+        <body onclick="location.href='/main'">
+        <div class="start">
+            <div class="start_page">
+                <img src="/img/start_earth.png" alt=""/>
+                <div class="logo_print">Save Earth -</div>
+                <div class="team_print">딱총나무지팡이</div>
+            </div>
+        </div>
+        </body>
+    </div>
+</html>

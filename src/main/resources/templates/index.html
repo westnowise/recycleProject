@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div sec:authorize="isAuthenticated()" class="user-wrap">
+        <img src="/img/user.png" alt="" class="user" style="width: 33px; height: 33px;" onclick="location.href='/mypage'">
+        <div class="info"> <span th:text="${area}"></span>, <span th:text="${email}"></span> 님</div>
+    </div>
+    <div sec:authorize="!isAuthenticated()" class="user-wrap">
+        <img src="/img/user.png" alt="" class="user" style="width: 33px; height: 33px;" onclick="location.href='/login'">
+        <div class="info">로그인해주세요</div>
+    </div>
+    <div class="tip">아래 탭을 좌우로 넘겨보세요!</div>
+
+    <!--슬라이드 -->
+    <section class="swiper mySwiper"  style="overflow-x: hidden;">
+        <div class="swiper-wrapper">
+            <div class="card swiper-slide" style="background: linear-gradient(90deg, rgba(78,76,117,1) 0%, rgba(22,198,150,1) 100%, rgba(47,181,255,1) 100%);">
+                <div class="card__content" style="width: 300px;">
+                    <div class="point-wrap"><span>My point</span><button class="submit">신청하기</button></div>
+                    <br>포인트를 모아 종량제 봉투를 신청하세요.<br>
+                    <div class="point"><span th:text="${point}"></span> P</div>
+                </div>
+            </div>
+
+            <div class="card swiper-slide" style="background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);">
+                <div class="card__content" style="width: 300px;">
+                    <div class="point-wrap"><span>현재 순위</span><button class="submit" onclick="location.href='../ranking/ranking.html'">더보기</button></div>
+                    <br>자신의 거주 지역에서 1등을 해보세요.
+                    <div class="point"><br>해미면 기준 3위</div>
+                </div>
+            </div>
+    </section>
+
+    <!-- 쓰레기 객체 인식 -->
+    <div class="object-camera" onclick="location.href='/picture'">
+        쓰레기 인식 📸<br><br>
+        <span style="font-size: 14px;">카메라를 이용해 쓰레기를 인식하고<br> 분리수거 하세요.</span>
+    </div>
+
+    <div class="AR">
+        증강현실맵 🔮<br><br>
+        <span style="font-size: 14px;">카메라를 켜 보이는 쓰레기를 비춰보세요!<br> 귀여운 몬스터가 나와요 .. 아마도.. </span>
+    </div>
+
+    <!-- 미니게임 -->
+    <div class="game-wrap">
+        <span>💡미니게임</span>
+        <div class="game1" onclick="location.href='/cardgame'">
+            <p>카드 짝 맞추기 게임</p>
+        </div>
+        <div class="game2" onclick="location.href='/draggame'">
+            <p>드래그 분류배출 게임</p>
+        </div>
+        <div class="game3" onclick="location.href='/oxgame'">
+            <p>OX 퀴즈</p>
+        </div>
+    </div>
+</body>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 300,
+            modifier: 1,
+            slideShadows: false,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+        },
+    });
+</script>
+</html>

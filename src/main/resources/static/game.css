@@ -1,0 +1,912 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
+
+ul,
+ol,
+dl,
+dt,
+dd,
+fieldset {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+legend {
+    overflow: hidden;
+    font-size: 0px;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+}
+
+li {
+    list-style: none;
+    padding: 0px;
+}
+
+body {
+    margin: 0px;
+    font-family: 'Single Day', cursive;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.skip {
+    position: absolute;
+    overflow: hidden;
+    height: 0;
+    width: 0;
+    font-size: 0;
+    visibility: hidden;
+}
+
+a,
+a:visited,
+a:link {
+    color: #636363;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #636363;
+    text-decoration: none;
+}
+
+button {
+    background: none;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    cursor: pointer;
+}
+
+.al {
+    text-align: left;
+}
+
+.ac {
+    text-align: center;
+}
+
+.ar {
+    text-align: right;
+}
+
+pre {
+    white-space: pre-line;
+}
+
+.text_orange {
+    color: #ffb636;
+}
+
+.gameLayout {
+    position: relative;
+    width: 100vw;
+    height: 90vh;
+    overflow: hidden;
+/*     padding-top: 160px; */
+    margin: 0 auto;
+    background: url('./img/bg.gif') no-repeat 100%;
+    background-size: cover;
+}
+
+.gameLayout.on h1 {
+    top: 20px;
+}
+
+.gameLayout.on .gameLBox {
+    left: 20px;
+}
+
+.gameLayout.on .gameRBox {
+    right: 20px;
+}
+
+.gameLayout.on .gameRe {
+    bottom: 10%;
+}
+
+.gameLayout h1 {
+    position: absolute;
+    z-index: 3;
+    width: 140px;
+    top: -200px;
+    left: 50%;
+    transition: all 0.6s ease;
+    margin: 0 0 0 -70px;
+}
+
+.gameLayout h1 img {
+    width: 100%;
+}
+
+.gameSky {
+    position: absolute;
+    z-index: 1;
+    top: 70px;
+    left: 0px;
+    width: 1200px;
+    height: 244px;
+    background: url('./img/sky.gif') no-repeat 100%;
+    animation-name: gameSAni;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-play-state: running;
+}
+
+@keyframes gameSAni {
+    from {
+        margin-left: 0px;
+    }
+
+    to {
+        margin-left: -600px;
+    }
+}
+
+.gameLBox {
+    position: absolute;
+    top: 17%;
+    left: -200px;
+    z-index: 10;
+    width: 200px;
+    height: 150px;
+    transition: all 0.6s ease;
+    border-radius: 10px;
+    background-color: #01cf2ee0;
+    animation-name: gameTAni;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes gameTAni {
+    0% {
+        margin-top: -10px;
+    }
+
+    50% {
+        margin-top: 0px;
+    }
+
+    100% {
+        margin-top: -10px;
+    }
+}
+
+.gameLv {
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    margin: 0px;
+}
+
+.gameT {
+    margin: 0px 6px 6px;
+    background-color: #fff;
+    font-weight: bold;
+    border-radius: 6px;
+    font-size: 20px;
+    line-height: 55px;
+    text-align: center;
+}
+
+.gameT span {
+    font-family: arial;
+    font-size: 45px;
+    margin-top: 8px;
+    display: inline-block;
+}
+
+.gameRBox {
+    position: absolute;
+    top: 17%;
+    right: -200px;
+    z-index: 10;
+    width: 200px;
+    transition: all 0.6s ease;
+}
+
+.gameLP {
+    font-family: arial;
+    margin: 20px 0px 0px;
+    text-align: right;
+    color: #01cf2ee0;
+    font-size: 40px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    transform-origin: 100% 50%
+}
+
+.gameTP {
+    text-align: right;
+    margin: 0px;
+    color: #333;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.gameTP span {
+    font-family: arial;
+    font-size: 50px;
+}
+
+.gameArea {
+    top: 30%;
+    position: relative;
+    height: 500px;
+}
+
+.gameObj {
+    position: absolute;
+    z-index: 10;
+    width: 120px;
+    height: 150px;
+}
+
+.gameObj img {}
+
+.dirty:after {
+    content: "";
+    position: absolute;
+    z-index: 10;
+    margin: 20px 0px 0px -48px;
+    width: 60px;
+    height: 44px;
+    background: url(./img/img_dust.png) no-repeat;
+}
+
+.gameRe {
+    position: absolute;
+    z-index: 9;
+    left: 0%;
+    width: 100%;
+    height: 122px;
+    bottom: -200px;
+    text-align: center;
+    transition: all 0.6s ease;
+}
+
+.gameRe .reDiv {
+    display: inline-block;
+    width: 130px;
+    height: 220px;
+    text-align: left;
+}
+
+.gameRe .reDiv:after {
+    content: "40+";
+    position: absolute;
+    z-index: 8;
+    width: 70px;
+    height: 200px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 10px;
+    font-family: arial;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: #000 3px 3px 0px;
+    margin-top: 75px;
+}
+
+.gameRe .reDiv.on:after {
+    animation-name: gameReTAni;
+    animation-duration: 1s;
+}
+
+@keyframes gameReTAni {
+    0% {
+        margin-top: 0px;
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    99% {
+        margin-top: -60px;
+        opacity: 0;
+        transform: scale(1.5);
+    }
+
+    100% {
+        margin-top: 0px;
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.gameRe .reDiv img {
+    position: absolute;
+    z-index: 9;
+    width: 130px;
+    transition: all 0.3s ease;
+    transform-origin: 50% 100%
+}
+
+.gameRe .reDiv.on img {
+    animation-name: gameReTAni2;
+    animation-duration: 0.3s;
+}
+
+@keyframes gameReTAni2 {
+    0% {
+        transform: scaley(1);
+    }
+
+    50% {
+        transform: scaley(1.2);
+    }
+
+    100% {
+        transform: scaley(1);
+    }
+}
+
+.gameRe .reDirty {
+    position: absolute;
+    z-index: 11;
+    width: 120px;
+    height: 81px;
+    background: url(./img/img_dirty.png) no-repeat;
+    margin: -30px 0px 0px -10px;
+    display: none;
+}
+
+.gameRe .reOk {
+    position: absolute;
+    z-index: 11;
+    width: 120px;
+    height: 127px;
+    background: url(./img/img_ok.png) no-repeat;
+    margin: -100px 0px 0px -10px;
+    display: none;
+}
+
+/* start */
+.gameStart {
+    position: absolute;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.gameStart .bg {
+    position: absolute;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: #000;
+    opacity: 0.3;
+}
+
+/*.gameStart button {position:absolute; z-index:101; top:40%; width:300px; padding:10px 0px; text-align:center; left:50%; margin-left:-150px; background-color:#fff;}*/
+.gameStart .startBox {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 5px solid #fff;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.gameStart .startBox h2 {
+    margin: 70px 0 20px;
+}
+
+.gameStart .startBox small {
+    position: absolute;
+    top: 43%;
+    left: 5%;
+    font-size: 45px;
+    color: #000;
+}
+
+.gameStart .startBox strong {
+    font-size: 35px;
+    position: absolute;
+    top: 48%;
+    left: 27%;
+    color: #000;
+}
+
+.gameStart button {
+    position: absolute;
+    bottom: 35%;
+    left: 50%;
+    margin-left: -165px;
+    animation-name: gameBu1;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes gameBu1 {
+    0% {
+        transform: scale(0.9);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0.9);
+    }
+}
+
+.gameStart .gameTip {
+    position: absolute;
+    left: 43%;
+    bottom: 15%;
+    width: 650px;
+    margin-left: -260px;
+    background-color: #4eaf34;
+    border-radius: 5px;
+}
+
+.gameStart .gameTip dl {
+    position: relative;
+    padding: 5px 20px 5px 80px;
+}
+
+.gameStart .gameTip dl dt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    color: #fff000;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 6px 15px;
+}
+
+.gameStart .gameTip dl dt span {
+    display: block;
+    font-size: 20px;
+    text-align-last: justify;
+    text-align: justify;
+    line-height: 22px;
+}
+
+.gameStart .gameTip dl dd {
+    font-size: 15px;
+    color: #fff;
+    line-height: 22px;
+    letter-spacing: -1px;
+}
+
+/* gameLevel */
+.gameLevel {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    top: 30%;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.gameLevel .bg {
+    position: absolute;
+    z-index: 100;
+    top: -50%;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: #000;
+    opacity: 0.7;
+}
+
+.gameLevel .level {
+    position: absolute;
+    top: 300px;
+    left: 50%;
+    margin-left: -150px;
+    width: 300px;
+    text-align: center;
+    height: 181px;
+    background: url(./img/bg_level.png) no-repeat 100%;
+    z-index: 101;
+}
+
+.gameLevel .level p {
+    margin: 0;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 69px;
+    color: #000;
+}
+
+.gameLevel .level p span {
+    font-family: arial;
+    color: #f24949;
+}
+
+.gameLevel .level button {
+    font-size: 42px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Nanum Gothic', '나눔고딕', '돋움', Dotum, sans-serif;
+    width: 266px;
+    line-height: 84px;
+    border-radius: 15px;
+}
+
+/* gameClear */
+.gameClear {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.gameClear .bg {
+    position: absolute;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: #000;
+    opacity: 0.7;
+}
+
+.gameClear .clearBonus {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    width: 300px;
+    height: 227px;
+    margin-left: -150px;
+    text-align: center;
+    background: url(./img/bg_clear.png) no-repeat 100%;
+    z-index: 101;
+}
+
+.gameClear .clearBonus>p {
+    font-weight: bold;
+    font-size: 36px;
+    margin: 0;
+    color: #ffd200;
+    line-height: 68px;
+}
+
+.gameClear .clearBonus>p span {
+    color: #f24949;
+}
+
+.gameClear .clearBonus .score {
+    font-family: arial;
+    padding: 24px 0;
+    margin: 0 16px;
+    color: #fff;
+}
+
+.gameClear .clearBonus .score small {
+    font-size: 26px;
+}
+
+.gameClear .clearBonus .score span {
+    font-size: 26px;
+}
+
+.gameClear .clearBonus .score strong {
+    display: block;
+    color: #ffd200;
+    font-size: 46px;
+}
+
+.gameClear button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -150px;
+    z-index: 101;
+    animation-name: gameBu1;
+    animation-duration: 0.9s;
+    animation-iteration-count: infinite;
+}
+
+/* gameEnd */
+.gameEnd {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.gameEnd .bg {
+    position: absolute;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: #000;
+    opacity: 0.7;
+}
+
+.gameEnd .success {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    margin-left: -150px;
+    text-align: center;
+    width: 300px;
+    height: 278px;
+    background: url(./img/bg_success.png) no-repeat 100%;
+    z-index: 102;
+}
+
+.gameEnd .success .successT {
+    display: block;
+    margin-top: 100px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+}
+
+.gameEnd .success p {
+    color: #fff;
+    font-size: 32px;
+    line-height: 72px;
+    margin: 11px 17px;
+    border-radius: 17px;
+}
+
+.gameEnd .success p strong {
+    font-family: arial;
+    font-size: 50px;
+    color: #ffd800;
+    position: relative;
+    top: 4px;
+}
+
+.gameEnd .success .successB {
+    display: block;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+}
+
+.gameEnd .restart {
+    position: absolute;
+    top: 53%;
+    left: 50.7%;
+    margin-left: -150px;
+    z-index: 101;
+    animation-name: gameBu1;
+    animation-duration: 0.9s;
+    animation-iteration-count: infinite;
+}
+
+.gameEnd .help {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    margin-left: -107px;
+    z-index: 101;
+}
+
+.gameEnd .bgEffect {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+}
+
+.bgEffect1 {
+    position: absolute;
+    animation-name: bgEffect1;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes bgEffect1 {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+        margin-top: 0px;
+    }
+
+    50% {
+        transform: scale(0.8);
+        opacity: 0.5;
+        margin-top: -30px;
+    }
+
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+        margin-top: 30px;
+    }
+}
+
+.gameEnd .firecracker {
+    position: absolute;
+    top: 30%;
+    margin: 0;
+    z-index: 101;
+}
+
+.gameEnd .firecracker1 {
+    position: absolute;
+    left: 335px;
+    width: 180px;
+    top: 20px;
+    animation-name: firecracker1;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes firecracker1 {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* gameWash */
+.gameLayout.on2 .gameWash {
+    right: 0;
+}
+
+.gameWash {
+    position: absolute;
+    z-index: 8;
+    top: 0;
+    right: -200px;
+    transition: all 0.6s ease;
+}
+
+.WashImg {
+    position: absolute;
+    width: 80px;
+    margin: -29px 0px 0px -10px;
+    animation-name: Wash1;
+    animation-duration: 0.2s;
+    animation-iteration-count: infinite;
+}
+
+.WashImg2 {
+    position: absolute;
+    width: 78px;
+    margin: -32px 0px 0px -10px;
+    animation-name: Wash1;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes Wash1 {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+
+.gameClean {
+    position: absolute;
+    z-index: 11;
+    width: 89px;
+    height: 89px;
+    top: -100px;
+    left: -100px;
+    background: url(./img/img_clean.png) no-repeat;
+    display: none;
+    margin-top: 150px;
+}
+
+/*recycle chart css*/
+/* start */
+.gameChart {
+    position: absolute;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    display: none;
+}
+
+.gameChart .bg {
+    position: absolute;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: #000;
+    opacity: 0.7;
+}
+
+.gameChart .startBox {
+    position: absolute;
+    z-index: 101;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 13px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.recycleChart {
+    font-size: 17px;
+    color: #333;
+    border-bottom: 1px solid #dadada;
+    border-radius: 10px 10px 0px 0px;
+    overflow: hidden;
+}
+
+.recycleChart caption {
+    font-size: 0;
+    text-indent: -9999px;
+    overflow: hidden;
+    height: 0;
+}
+
+.recycleChart tbody tr td {
+    padding: 8px 10px;
+    background-color: #fff;
+    border-top: 1px solid #dadada;
+    word-break: keep-all;
+}
+
+.recycleChart thead tr th {
+    padding: 15px 0;
+    background-color: #448ccb;
+    color: #fff;
+}
+
+.recycleChart thead tr th.kind {
+    border-right: 1px solid #ddd;
+}
+
+.recycleChart tbody tr td.kind {
+    text-align: center;
+    border-right: 1px solid #ddd;
+    background-color: #eee;
+    font-weight: bold;
+}
+
+.gameChart button img {
+    width: 200px;
+    margin-top: 20px;
+}

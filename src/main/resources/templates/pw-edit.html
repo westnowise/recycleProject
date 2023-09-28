@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./form.css">
+</head>
+<body>
+    <div class="func">
+        <div class="big">PASSWORD</div>
+    </div>
+    <form th:action="@{/pwedit}" method="post" >
+    <div class="formWrap2" style="position: absolute; top: 25%;">
+        <input type="password" name = "currentPassword" class="name_box" placeholder="현재 비밀번호" style="text-indent: 10px;"></input>
+        <input type="password" name = "newPassword" class="password_box_register" placeholder="새 비밀번호" style="text-indent: 10px;"></input>
+        <input type="password" name = "confirmPassword" class="password_box_register" placeholder="비밀번호 확인" style="text-indent: 10px;"></input>
+    </div>
+    <button class="okBTN_register" type = "submit">저장</button>
+    </form>
+</body>
+</html>

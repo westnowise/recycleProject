@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> ❓ OX퀴즈 🙆🙅‍♀️</title>
+    <link rel="stylesheet" href="./oxgame.css">
+</head>
+<body>
+    <div class="top">
+        <h1>OX퀴즈</h1>
+        <p>얼마나 알고 있을까? 퀴즈를 통해 알아보자! 😁</p>
+    </div>
+    <div class="paper">
+        <div class="paper-content">
+            <div id="quiz"><p id="question"></p></div>
+        </div>
+    </div>
+    <div class="buttons" id="buttons">
+        <button class="btn"></button>
+        <button class="btn"></button>
+    </div>
+<form th:action="@{/oxgame}" method="post" >
+    <div sec:authorize="isAuthenticated()" class="buttons">
+        <input type="hidden" name="score" id="score" />
+        <button type="submit" id="hidebutton" style="display: none;">포인트 저장하기</button>
+    </div>
+</form>
+    
+    
+</body>
+
+<script >
+    // 문제 객체(생성자 함수)
+    function Question(text, choice, answer) {
+        this.text = text; // 질문 텍스트
+        this.choice = choice; // 선택할 답들(배열)
+        this.answer = answer; // 정답 정보
+    }
+
+    // 퀴즈 정보 객체
+    function Quiz(questions) {
+        this.score = 0; // 점수
+        this.questions = questions; // 문제
+        this.questionIndex = 0; // 문제 번호
+    }
+
+    // 정답 확인 메서드
+    Quiz.prototype.correctAnswer = function (answer) {
+        return answer == this.questions[this.questionIndex].answer;
+    }
+
+    var questions = [
+        new Question('고추장, 간장, 쌈장 등 장류는 음식물 쓰레기다!', ['O', 'X'], 'X'),
+        new Question('칫솔은 플라스틱이다. 따라서 재활용 쓰레기다!', ['O', 'X'], 'X'),
+        new Question('스프링 노트나 달력은 쇠 부분을 제거한 뒤 폐지로 분리 배출해야한다.', ['O', 'X'], 'O'),
+        new Question('패스트푸드 음료컵의 뚜껑과 빨대는 모두 플라스틱이다!', ['O', 'X'], 'X'),
+        new Question('영수증은 재활용이 가능하다.', ['O', 'X'], 'X'),
+        new Question('금속캔을 버릴 땐 플라스틱 뚜껑 등 다른 재질은 제거한 후 배출해야한다.', ['O', 'X'], 'O'),
+        new Question('투명 페트병은 라벨을 제거하고 압착한 후 소재가 다른 뚜껑과 분리 배출해야한다.', ['O', 'X'], 'X'),
+        new Question('캔음료는 최대한 납작하게 압축시켜 분리배출하는 것이 좋다.', ['O', 'X'], 'O'),
+        new Question('과일 포장 시 완충용으로 사용한 일명 "꽃받침"은 재활용이 불가능하므로 종량제 봉투에 버려야한다.', ['O', 'X'], 'O'),
+        new Question('음료를 담아 사용한 종이컵은 재활용이 불가능하므로 종량제 봉투에 버려야한다.', ['O', 'X'], 'X'),
+        new Question('양념이 물든 플라스틱 용기는 분리 배출한다.', ['O', 'X'], 'X'),
+        new Question('알루미늄 포일은 재활용이 불가능하다.', ['O', 'X'], 'O'),
+        new Question('택배용 보냉 상자류 가운데 내부 알루미늄박, 비닐 등이 분리가 되지 않을 경우 재활용이 불가능하다.', ['O', 'X'], 'O'),
+        new Question('약은 일반쓰레기이다!', ['O', 'X'], 'X'),
+        new Question('귤 껍질은 음식물 쓰레기가 아니다!', ['O', 'X'], 'X'),
+        new Question('휴대폰 케이스는 재활용이 가능하다!', ['O', 'X'], 'X'),
+        new Question('올리브유, 식용유통과 같은 기름통은 재활용이 가능하다!', ['O', 'X'], 'O'),
+        new Question('아이스팩은 일반쓰레기이다!', ['O', 'X'], 'O'),
+        new Question('달걀껍질은 음식물 쓰레기이다!', ['O', 'X'], 'X'),
+        new Question('깨진 유리병은 잘 감싸 유리로 분리수거한다.', ['O', 'X'], 'X')
+    ];
+
+    // 퀴즈 객체 생성
+    var quiz = new Quiz(questions);
+
+    // 문제 출력 함수
+    function updateQuiz() {
+        var question = document.getElementById('question');
+        var idx = quiz.questionIndex + 1;
+        var choice = document.querySelectorAll('.btn');
+
+        // 문제 출력
+        question.innerHTML = '문제' + idx + ') ' + quiz.questions[quiz.questionIndex].text;
+
+        // 선택 출력
+        for (var i = 0; i < 20; i++) {
+            choice[i].innerHTML = quiz.questions[quiz.questionIndex].choice[i];
+        }
+
+        progress();
+    }
+
+    function progress() {
+        var progress = document.getElementById('progress');
+        progress.innerHTML = '문제 ' + (quiz.questionIndex + 1) + '/ ' + quiz.questions.length;
+    }
+
+    var btn = document.querySelectorAll('.btn');
+
+    // 입력 및 정답 확인 함수
+    function checkAnswer(i) {
+        btn[i].addEventListener('click', function () {
+            var answer = btn[i].innerText;
+
+            if (quiz.correctAnswer(answer)) {
+                alert('🌏🌈 정답입니다! 🌼🎆');
+                quiz.score++;
+            } else {
+                if(quiz.questionIndex == 0) {
+                    alert('염분(소금기)이 많은 장류는 음식물 쓰레기에 포함되지 않아요. 🙂');
+                } else if (quiz.questionIndex == 1) {
+                    alert('칫솔은 부피가 작고 칫솔모, 고무 손잡이 등 다른 재질로 혼합되어 있어서 플라스틱으로 재활용을 할 수 없어요. 🙂');
+                } else if (quiz.questionIndex == 2) {
+                    alert('스프링 노트나 달력은 쇠 부분을 제거한 뒤 폐지로 분리 배출하는게 맞아요. 🙂');
+                } else if (quiz.questionIndex == 3) {
+                    alert('뚜껑은 플라스틱, 빨대는 일반 쓰레기로 분리배출해야 해요. 🙂');
+                } else if (quiz.questionIndex == 4) {
+                    alert('영수증은 코팅된 정도에 따라 다르게 종이 또는 일반쓰레기로 배출해야 해요. 🙂 \n 단면 코팅 : 일반 쓰레기 \n 양면 코팅 : 비닐');
+                } else if (quiz.questionIndex == 5) {
+                    alert('금속캔을 버릴 땐 플라스틱 뚜껑 등 다른 재질은 제거한 후 분리 배출해야 해요. 🙂');
+                } else if (quiz.questionIndex == 6) {
+                    alert('투명 페트병은 내용물을 깨끗이 비우고 부착상표(라벨) 등을 제거한 후 가능한 압착해 두껑을 닫아 분리 배출해야 해요. 🙂');
+                } else if (quiz.questionIndex == 7) {
+                    alert('캔을 압축해서 배출하면 더욱 많은 부피의 캔이 분리배출 될 수 있어 세척한 뒤 압축하여 분리 배출해야 해요. 🙂');
+                } else if (quiz.questionIndex == 8) {
+                    alert('"꽃받침"은 재활용이 불가능하므로 종량제 봉투에 버리는게 맞아요. 🙂');
+                } else if (quiz.questionIndex == 9) {
+                    alert('종이컵은 내용물을 비우고 물로 헹군 후 압착하여 봉투에 넣거나 한 곳에 묶어서 배출해야 해요. 🙂');
+                } else if (quiz.questionIndex == 10) {
+                    alert('양념이 물든 플라스틱 용기는 세척 (베이킹소다 사용 시 쉬움)하여 얼룩을 제거한 뒤, 분리 배출해야 해요. 🙂');
+                } else if (quiz.questionIndex == 11) {
+                    alert('알루미늄 포일은 재활용을 할 수 없어요.');
+                } else if (quiz.questionIndex == 12) {
+                    alert('택배용 보냉 상자류 가운데 내부 알루미늄박, 비닐 등이 분리가 되지 않을 경우 재활용을 할 수 없어요. 🙂');
+                } else if (quiz.questionIndex == 13) {
+                    alert('약은 일반 쓰레기가 아니에요. 약국이나 보건소의 전용수거함에 배출해야 해요. 🙂');
+                } else if (quiz.questionIndex == 14) {
+                    alert('귤 껍질은 음식물 쓰레기로 버려요. 말린 귤 껍질은 일반 쓰레기나 음식물 쓰레기 어느 쪽으로 버려도 괜찮지만 비료나 사료로 재가공될 수 있는 음식물 쓰레기로 버리는 걸 더 추천해요. 🙂');
+                } else if (quiz.questionIndex == 15) {
+                    alert('핸드폰 케이스는 보통 TPU, 실리콘, 복합 플라스틱, 가죽 등의 재질로 만들어지기 때문에 재활용을 할 수 없어요. 🙂');
+                } else if (quiz.questionIndex == 16) {
+                    alert('기름통 같은 경우 물로만 씻어서는 재활용 할 수 없으나 용기를 잘라서 기름기를 제거하면 재활용이 가능해요. 🙂');
+                } else if (quiz.questionIndex == 17) {
+                    alert('환경부는 아이스팩을 통째로 종량제 봉투에 버리는 방식을 권고하고 있어요. 🙂');
+                } else if (quiz.questionIndex == 18) {
+                    alert('달걀, 조개껍데기, 닭뼈 등 동물이 먹지 못하는 것은 일반쓰레기에요. 🙂');
+                } else if (quiz.questionIndex == 19) {
+                    alert('깨지지 않은 유리병은 유리로 분리수거하지만, 깨진 유리는 신문지에 잘 감싸 일반쓰레기로 배출해야 해요. 🙂');
+                } 
+                
+            }
+
+
+
+            if (quiz.questionIndex < quiz.questions.length - 1) {
+                quiz.questionIndex++;
+                updateQuiz();
+            } else {
+                result();
+            }
+        });
+    }
+
+    function result() {
+            var quizDiv = document.getElementById('quiz');
+            var per = parseInt((quiz.score * 100) / quiz.questions.length);
+            var txt = '<h1 style = "background-color : #FAFAFA; color:black;font-family: GmarketSansMedium;">결과</h1>' + '<h2 id="score" style = "background-color : #FAFAFA; font-family: GmarketSansMedium;">당신의 점수: ' + quiz.score + '/' + quiz.questions.length + '<br><br>' + per + '점' + '</h2>';
+
+            var scoreInput = document.getElementById('score');
+            scoreInput.value = per;
+
+            quizDiv.innerHTML = txt;
+
+            // 점수별 결과 텍스트
+            if (per < 60) {
+                txt += '<h3 style = "background-color : #FAFAFA; font-family: GmarketSansMedium;">조금 더 노력해봐요! 🤓</h2>';
+                quizDiv.innerHTML = txt;
+            } else if (per >= 60 && per < 80) {
+                txt += '<h3 style = "background-color : #FAFAFA; font-family: GmarketSansMedium;">잘하고 있어요! 😘</h2>'
+                quizDiv.innerHTML = txt;
+            } else if (per >= 80) {
+                txt += '<h3 style = "background-color : #FAFAFA; font-family: GmarketSansMedium;">아주 훌륭해요!😍👏 </h2>'
+                quizDiv.innerHTML = txt;
+            }
+
+            document.getElementById('buttons').style.visibility = 'hidden';
+            document.getElementById('hidebutton').style.display = 'block';
+            
+
+        }
+
+        for (var i = 0; i < btn.length; i++) {
+            checkAnswer(i);
+        }
+
+        updateQuiz();
+
+</script>
+</html>

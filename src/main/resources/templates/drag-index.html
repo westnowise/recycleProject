@@ -1,0 +1,174 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <title>🖱 드래그 게임 🎲</title>
+    <link rel="stylesheet" type="text/css" href="./jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="./game.css">
+    <script src="/js/jquery.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="/js/script.js"></script>
+    <!-- AceCounter Log Gathering Script V.8.0.AMZ2019080601 -->
+    <script language='javascript'>
+        var _AceGID = (function () { var Inf = ['gtp12.acecounter.com', '8080', 'AM1A38129554191', 'AW', '0', 'NaPm,Ncisy', 'ALL', '0']; var _CI = (!_AceGID) ? [] : _AceGID.val; var _N = 0; var _T = new Image(0, 0); if (_CI.join('.').indexOf(Inf[3]) < 0) { _T.src = "https://" + Inf[0] + '/?cookie'; _CI.push(Inf); _N = _CI.length; } return { o: _N, val: _CI }; })();
+        var _AceCounter = (function () { var G = _AceGID; var _sc = document.createElement('script'); var _sm = document.getElementsByTagName('script')[0]; if (G.o != 0) { var _A = G.val[G.o - 1]; var _G = (_A[0]).substr(0, _A[0].indexOf('.')); var _C = (_A[7] != '0') ? (_A[2]) : _A[3]; var _U = (_A[5]).replace(/\,/g, '_'); _sc.src = 'https:' + '//cr.acecounter.com/Web/AceCounter_' + _C + '.js?gc=' + _A[2] + '&py=' + _A[4] + '&gd=' + _G + '&gp=' + _A[1] + '&up=' + _U + '&rd=' + (new Date().getTime()); _sm.parentNode.insertBefore(_sc, _sm); return _sc.src; } })();
+    </script>
+<!--     <noscript><img src='https://gtp12.acecounter.com:8080/?uid=AM1A38129554191&je=n&' border='0' width='0' height='0'
+            alt=''></noscript> -->
+    <!-- AceCounter Log Gathering Script End -->
+</head>
+
+<body>
+    <div class="gameLayout">
+        <h1><img src="../img/img/earth.png" alt="분리수거의 달인" style="width: 20vw;"/></h1>
+        <div class="gameLBox">
+            <p class="gameLv"><span>1</span>단계</p>
+            <p class="gameT"><span>60</span>초</p>
+        </div>
+        <div class="gameRBox">
+            <p class="gameLP">+<span>0</span></p>
+            <p class="gameTP"><span>0</span>점</p>
+        </div>
+        <div class="gameArea">
+            <div class="gameAreaIn">
+            </div>
+            <div class="gameWash">
+                <img src="./img/img_wash.png" alt="">
+                <img src="./img/img_wash2.png" class="WashImg" alt="">
+                <img src="./img/img_wash3.png" class="WashImg2" alt="">
+            </div>
+        </div>
+        <div class="gameRe">
+        </div>
+        <div class="gameLevel">
+            <!-- 게임별 단계 코딩 -->
+            <div class="level">
+                <p>LEVEL <span>1</span></p>
+                <button type="button">READY!</button>
+            </div>
+            <div class="bg"></div>
+        </div>
+        <div class="gameClear">
+            <!-- 게임 단계별 완료 코딩 -->
+            <div class="clearBonus">
+                <p>CLEAR <span>BONUS</span></p>
+                <div class="score">
+                    <small>3400</small> X <span>1.2</span>
+                    <strong>4080</strong>
+                </div>
+            </div>
+            <button type="button"><img src="./img/btn_next.png" alt=""></button>
+            <div class="bg"></div>
+        </div>
+        <div class="gameStart">
+            <!-- 게임 최초 시작 코딩 -->
+            <div class="startBox">
+                <h2><img src="../img/earth.png" alt="분리수거의 달인" style="width: 50vw;"></h2>
+                <small>생활쓰레기 중에 재활용되는 물품이 얼마나 될까요?</small>
+                <strong>여러분의 능력을 보여주세요!!</strong>
+            </div>
+            <button type="button"><img src="./img/btn_start.png" alt=""></button>
+            <div class="gameTip">
+                <dl>
+                    <dt>GAME<span>T I P</span></dt>
+                    <dd>활
+                        주어진 시간내에 모든 분리수거 용품을 적절한 수거함에<br>
+                        담는 게임입니다. 빠르게 처리 할 수록 보너스 점수를 받을 수 있어요.
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="gameEnd">
+            <!-- 게임 최종 완료 코딩 -->
+            <div class="bgEffect">
+                <img src="./img/paper_effect.png" class="bgEffect1" alt="">
+            </div>
+            <figure class="firecracker">
+                <img src="./img/firecracker.png" class="firecracker1" alt="">
+            </figure>
+            <div class="success">
+                <span class="successT">"2단계 까지 진입"</span>
+                <p><strong></strong>점</p>
+                <span class="successB">다음엔 더 잘할 수 있어요!</span>
+            </div>
+            <button type="button" class="restart"><img src="./img/btn_success.png" alt="처음으로" style="position: absolute; top: 50%;"></button>
+            <button type="button" class="help"><img src="./img/btn_guide.png" alt="help"></button>
+            <div class="bg"></div>
+        </div>
+        <div class="gameSky"></div>
+        <div class="gameClean"></div>
+        <div class="gameChart">
+            <div class="startBox">
+                <!-- 표 작성 -->
+                <table class="recycleChart" cellspacing="0">
+                    <caption>재활용이 가능한 쓰레기 종류 및 분리배출 방법</caption>
+                    <colgroup>
+                        <col width="30%">
+                        <col width="*">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col" class="kind">종류</th>
+                            <th scope="col">배출 방법</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="kind">종이팩</td>
+                            <td>내용물은 비우고 가급적 물로 헹군 후 압착하여 배출</td>
+                        </tr>
+                        <tr>
+                            <td class="kind">철캔, 알류미늄 캔</td>
+                            <td>내용물을 비우고 가능한 압착한 후 플라스틱 뚜껑 등은 분리하여 배출</td>
+                        </tr>
+                        <tr>
+                            <td class="kind">기타캔류<br />(부탄가스 등)</td>
+                            <td>구멍을 뚫어 내용물을 비운 후 배출</td>
+                        </tr>
+                        <tr>
+                            <td class="kind">PET, PVC, PE, PP, PS, PSP 재질의 용기, 포장재 등</td>
+                            <td>내용물을 깨끗이 비우고 다른 재질로 된 뚜껑이나 부착상표 등을 분리 후 배출</td>
+                        </tr>
+                        <tr>
+                            <td class="kind">기타 플라스틱류</td>
+                            <td>이물질을 제거한 후 배출</td>
+                        </tr>
+                        <tr>
+                            <td class="kind">음료수병, 기타병류</td>
+                            <td>색상별 용기가 설치되어 색상별로 배출이 가능한 경우 분리 배출접착제로 부착되지 아니하여 상표제거가 가능한 경우 상표를 제거한 후 배출</td>
+                        </tr>
+                        <tr>
+                            <td class="kind">책, 신문지, 박스</td>
+                            <td>반듯하게 펴서 차곡차곡 쌓은 후 배출량이 많고 부치가 큰 것은 묶어서 배출</td>
+                        </tr>
+                        <tr>
+                            <td class="kind">스티로폼 완충재</td>
+                            <td>내용물을 비우고 부착상표 등을 제거하고, 깨끗이 씻어서 배출</td>
+                        </tr>
+                        <tr>
+                            <td class="kind">수은, 망간전기</td>
+                            <td>제품에서 분리한 후 인근의 전용수거함에 배출</td>
+                        </tr>
+                        <tr>
+                            <td class="kind">소형가전</td>
+                            <td>이물질을 제거한 후 배출</td>
+                        </tr>
+                        <tr>
+                            <td class="kind">형광등</td>
+                            <td>인근의 전용수거함에 배출</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button"><img src="./img/btn_guideClose.png" alt="닫기"></button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./mypage.css">
+</head>
+<body>
+    <div class="user-wrap">
+        <img src="/img/user.png" alt="" class="user" style="width: 33px; height: 33px;">
+        <div class="user-name"> <span th:text="${email}"></span> 님</div>
+    </div>
+    <p class="comment">정보를 수정하려면 각 탭을 터치하세요. <br> 계정 정보는 변경할 수 없습니다.</p>
+    <div class="state">
+        <div class="account-info">
+            <p>계정 정보</p>
+            <div><span th:text="${#authentication.principal.username}"></span></div>
+        </div>
+    </div>
+    <div class="edit-wrap">
+        <div class="account-info" onclick="location.href='/locationedit'">
+            <p>지역 정보</p>
+            <div><span th:text="${area}"></span></div>
+        </div>
+        <div class="account-info" onclick="location.href='/pwedit'">
+            <div style="padding: 25px 20px 0px 3px;">비밀번호 수정</div>
+        </div>
+        <div class="account-info" onclick="location.href='/logout'">
+            <div style="background: sky-blue; padding: 25px 20px 0px 3px;">로그아웃</div>
+        </div>
+    </div>
+
+</body>
+</html>
