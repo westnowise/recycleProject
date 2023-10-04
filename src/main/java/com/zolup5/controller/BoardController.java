@@ -93,11 +93,13 @@ public class BoardController {
                     String email = member.getEmail();
                     String area = member.getArea();
                     String point = member.getPoint();
+                    int ranking = member.getRanking();
 
                     model.addAttribute("username", username);
                     model.addAttribute("email", email);
                     model.addAttribute("area", area);
                     model.addAttribute("point", point);
+                    model.addAttribute("ranking", ranking);
                 }
             }
         }
@@ -279,49 +281,49 @@ public class BoardController {
         return "redirect:/main";
     }
 
-    @GetMapping("/picture")
-    public String picturepage() { return "picture"; };
-    @PostMapping(value = "/picture")
-    public String picture(@RequestParam("image") MultipartFile image, Model model) {
-        if (image.isEmpty()) {
-            model.addAttribute("error", "이미지가 선택되지 않았습니다.");
-            return "picture";
-        }
-
-        try {
-            byte[] imageData = image.getBytes();
-
-            // 플라스크 API 엔드포인트 URL
-            String flaskApiUrl = "http://127.0.0.1:5000/v1/object-detection/Trash1";
-
-            // HTTP 요청 생성
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-
-            // 수정
-            MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
-            body.add("image", new ByteArrayResource(imageData) {
-                @Override
-                public String getFilename() {
-                    return image.getOriginalFilename();
-                }
-            });
-
-            HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
-
-            RestTemplate restTemplate = new RestTemplate();
-            ResponseEntity<String> response = restTemplate.exchange(flaskApiUrl, HttpMethod.POST, requestEntity, String.class);
-
-            model.addAttribute("response", response.getBody());
-        } catch (IOException e) {
-            model.addAttribute("error", "Image error.");
-        } catch (HttpClientErrorException e) {
-            model.addAttribute("error", "HTTP error: " + e.getRawStatusCode() + " - " + e.getStatusText());
-        } catch (Exception e) {
-            model.addAttribute("error", "API request error : " + e.getMessage());
-        }
-
-        return "picture";
-    }
+//    @GetMapping("/picture")
+//    public String picturepage() { return "picture"; };
+//    @PostMapping(value = "/picture")
+//    public String picture(@RequestParam("image") MultipartFile image, Model model) {
+//        if (image.isEmpty()) {
+//            model.addAttribute("error", "이미지가 선택되지 않았습니다.");
+//            return "picture";
+//        }
+//
+//        try {
+//            byte[] imageData = image.getBytes();
+//
+//            // 플라스크 API 엔드포인트 URL
+//            String flaskApiUrl = "http://127.0.0.1:5000/v1/object-detection/Trash1";
+//
+//            // HTTP 요청 생성
+//            HttpHeaders headers = new HttpHeaders();
+//            headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+//
+//            // 수정
+//            MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
+//            body.add("image", new ByteArrayResource(imageData) {
+//                @Override
+//                public String getFilename() {
+//                    return image.getOriginalFilename();
+//                }
+//            });
+//
+//            HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
+//
+//            RestTemplate restTemplate = new RestTemplate();
+//            ResponseEntity<String> response = restTemplate.exchange(flaskApiUrl, HttpMethod.POST, requestEntity, String.class);
+//
+//            model.addAttribute("response", response.getBody());
+//        } catch (IOException e) {
+//            model.addAttribute("error", "Image error.");
+//        } catch (HttpClientErrorException e) {
+//            model.addAttribute("error", "HTTP error: " + e.getRawStatusCode() + " - " + e.getStatusText());
+//        } catch (Exception e) {
+//            model.addAttribute("error", "API request error : " + e.getMessage());
+//        }
+//
+//        return "picture";
+//    }
 
 }
