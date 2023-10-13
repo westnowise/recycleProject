@@ -1,0 +1,123 @@
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GangwonEduHyeonokT_OTFMediumA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduHyeonokT_OTFMediumA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PyeongChangPeace-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    background-color: rgb(244, 244, 244);
+}
+
+.top{
+    position: absolute;
+    top: 5%;
+}
+.top h1 {
+    font-family: 'PyeongChangPeace-Bold';
+    font-size: 50px;
+    background: radial-gradient(circle, rgba(233, 155, 202, 1) 0%, rgba(252, 90, 90, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+p {
+    font-weight: bold;
+    top: 26%;
+    font-family: 'GmarketSansMedium';
+}
+
+.start-button {
+    width: 130px;
+    height: 30px;
+    background-color: #8af2cf;
+    border: none;
+    border-radius: 20px;
+    font-weight: 600;
+    margin: 15px 0;
+    font-family: 'GmarketSansMedium';
+    position: absolute;
+    top: 20%;
+    
+}
+
+.timer {
+    margin-bottom: 40px;
+    font-size: 20px;
+    font-family: 'GmarketSansMedium';
+    position: absolute;
+    top: 30%;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(4, 100px);
+    gap: 10px;
+    margin-top: 170px;
+}
+
+.card-wrapper {
+    position: relative;
+}
+
+.front-card,
+.back-card {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    background-color: #def0c0;
+    backface-visibility: hidden;
+    font-size: 40px;
+    line-height: 100px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.front-card {
+    background-color: #ffffff94;
+}
+
+.back-card {
+    background-image: url(../img/love_recycle.png);
+    background-size: cover;
+}
