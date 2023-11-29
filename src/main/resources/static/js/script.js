@@ -26,9 +26,9 @@ $(function(){
 // gN.scoreN		단계 스코어(진행형)
 // gN.levelscore		단계 스코어(최종)
 // gN.scoreNB		단계 남은시간
-// gN.totalscore		총점수(최종)
+// gN.totalscore	총점수(최종)
 // gN.score			보너스합산점수(최종)
-// gN.score2			보너스합산점수(진행형)
+// gN.score2		보너스합산점수(진행형)
 // gN.ti : gN.time	단계 실시간점수반영
 // gN.tb : gN.timeB단계 실시간 남은시간
 // gN.tt : gN.timeT	단계 완료 스코어반영
@@ -70,6 +70,11 @@ gN.end = function(){
 	}else{
 		$(".gameEnd .successB").text(gN.lEndText[3]);
 	}
+//    document.getElementById('hidebutton').style.display = 'block';
+    const scoreInput = document.getElementById('score');
+            if (scoreInput) {
+                scoreInput.value = gN.score;
+            }
 }
 gN.ready = function(){
 	$(".gameLayout").removeClass("on");
@@ -89,6 +94,8 @@ gN.clear = function(){
 	$(".gameClear .score strong").text(gN.score);
 	gN.score = Math.floor(gN.levelscore * Number("1."+gN.scoreNB));
 	//console.log(gN.score+" = "+gN.levelscore+" * (1+("+gN.scoreNB+"/100));");
+
+
 	$(".gameClear").fadeIn(300);
 }
 gN.start = function(){

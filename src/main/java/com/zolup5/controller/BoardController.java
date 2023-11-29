@@ -9,7 +9,6 @@ import com.zolup5.repository.UserRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
-
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -30,8 +29,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
-
-//import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.*;
@@ -281,49 +278,5 @@ public class BoardController {
         return "redirect:/main";
     }
 
-//    @GetMapping("/picture")
-//    public String picturepage() { return "picture"; };
-//    @PostMapping(value = "/picture")
-//    public String picture(@RequestParam("image") MultipartFile image, Model model) {
-//        if (image.isEmpty()) {
-//            model.addAttribute("error", "이미지가 선택되지 않았습니다.");
-//            return "picture";
-//        }
-//
-//        try {
-//            byte[] imageData = image.getBytes();
-//
-//            // 플라스크 API 엔드포인트 URL
-//            String flaskApiUrl = "http://127.0.0.1:5000/v1/object-detection/Trash1";
-//
-//            // HTTP 요청 생성
-//            HttpHeaders headers = new HttpHeaders();
-//            headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-//
-//            // 수정
-//            MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
-//            body.add("image", new ByteArrayResource(imageData) {
-//                @Override
-//                public String getFilename() {
-//                    return image.getOriginalFilename();
-//                }
-//            });
-//
-//            HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
-//
-//            RestTemplate restTemplate = new RestTemplate();
-//            ResponseEntity<String> response = restTemplate.exchange(flaskApiUrl, HttpMethod.POST, requestEntity, String.class);
-//
-//            model.addAttribute("response", response.getBody());
-//        } catch (IOException e) {
-//            model.addAttribute("error", "Image error.");
-//        } catch (HttpClientErrorException e) {
-//            model.addAttribute("error", "HTTP error: " + e.getRawStatusCode() + " - " + e.getStatusText());
-//        } catch (Exception e) {
-//            model.addAttribute("error", "API request error : " + e.getMessage());
-//        }
-//
-//        return "picture";
-//    }
 
 }
